@@ -384,6 +384,7 @@
   .hero-stamp::before{content:"✦"; display:block; font-size:20px; margin-bottom:2px;}
   .hero .hero-reach span{background:rgba(246,243,231,.1); box-shadow:inset 0 1px rgba(255,255,255,.12);}
   .hero .quality-item{background:linear-gradient(145deg,rgba(255,255,255,.1),rgba(255,255,255,.035));}
+  .hero-stage .hero-photo{will-change:transform;}
 
   /* ---------- CONVEYOR ---------- */
   .conveyor{position:relative; background:repeating-linear-gradient(-45deg, var(--olive) 0 22px, #4c5834 22px 44px); border-top:1px solid rgba(0,0,0,0.3); border-bottom:1px solid rgba(0,0,0,0.3); overflow:hidden;}
@@ -924,6 +925,13 @@
     </div>
 
     <div class="hero-stage">
+      <div class="hero-photo">
+        <img id="heroFarmScene" alt="Cattle, green crops and a working farm landscape">
+        <div class="cap">
+          <h3>From healthy crops to healthy herds</h3>
+          <div class="role">Farm-grown nutrition for cattle and goats</div>
+        </div>
+      </div>
       <div class="purpose-visuals" aria-label="Cattle and goat nutrition">
         <div class="purpose-visual"><img id="heroCattle" alt="Healthy dairy cattle fed with JS nutrition"><span>Dairy cattle nutrition</span></div>
         <div class="purpose-visual"><img id="heroGoat" alt="Healthy goats supported by JS feed"><span>Goat farm nutrition</span></div>
@@ -966,6 +974,15 @@
         <h2 style="margin-bottom:20px;">From veterinary knowledge to practical farm solutions.</h2>
         <p>Dr Abdul Basit is the Managing Director of JS Feeds &amp; Fodders in Hasilpur, and a practicing veterinary doctor with a background in livestock management. His clinical training and hands-on farm consultancy work directly inform how every JS product is formulated — from the silage fermentation process to the mineral mixtures blended for breeding season.</p>
         <p>The JS Silage Wanda Factory produces and supplies silage, hay, wanda (compound feed) and mineral mixtures formulated for the specific needs of dairy cattle and goats — from milk yield and weight gain to breeding and growth.</p>
+        <div class="md-message reveal">
+          <img id="mdMessagePhoto" class="md-message-photo" alt="Dr Abdul Basit">
+          <div class="md-message-body">
+            <span class="section-tag">In His Words</span>
+            <h3>Message from the Managing Director</h3>
+            <p>"My vision for JS Feeds &amp; Fodders is simple: to serve farmers with sincerity, quality and consistency. Livestock farming is built on daily decisions, and nutrition is one of the most important of them. We want to make dependable feed, fodder and mineral solutions accessible to cattle and goat farmers while continuing to learn from the farms we serve. Our goal is not only to supply products, but to build lasting relationships with farmers and contribute to healthier animals, stronger farms and a better livestock future."</p>
+            <div class="md-signature">— Dr Abdul Basit, Managing Director</div>
+          </div>
+        </div>
         <div class="pill-row">
           <span class="pill">🌾 A+ Export Quality</span>
           <span class="pill">🐄 Dairy Nutrition</span>
@@ -995,17 +1012,6 @@
             Instagram
           </a>
         </div>
-      </div>
-    </div>
-
-    <!-- 3. MESSAGE FROM MANAGING DIRECTOR -->
-    <div class="md-message reveal">
-      <img id="mdMessagePhoto" class="md-message-photo" alt="Dr Abdul Basit">
-      <div class="md-message-body">
-        <span class="section-tag">In His Words</span>
-        <h3>Message from the Managing Director</h3>
-        <p>"My vision for JS Feeds &amp; Fodders is simple: to serve farmers with sincerity, quality and consistency. Livestock farming is built on daily decisions, and nutrition is one of the most important of them. We want to make dependable feed, fodder and mineral solutions accessible to cattle and goat farmers while continuing to learn from the farms we serve. Our goal is not only to supply products, but to build lasting relationships with farmers and contribute to healthier animals, stronger farms and a better livestock future."</p>
-        <div class="md-signature">— Dr Abdul Basit, Managing Director</div>
       </div>
     </div>
 
@@ -1439,6 +1445,7 @@ document.getElementById('logoImg').src = IMG.logo;
 document.getElementById('sidebarLogoImg').src = IMG.logo;
 document.getElementById('heroLogo').src = IMG.logo;
 document.getElementById('doctorIntroPhoto').src = IMG.portrait;
+document.getElementById('heroFarmScene').src = 'https://images.unsplash.com/photo-1500076656116-558758c991c1?auto=format&fit=crop&w=1100&q=85';
 document.getElementById('heroCattle').src = 'https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=900&q=82';
 document.getElementById('heroGoat').src = 'https://images.unsplash.com/photo-1533318087102-b3ad366ed041?auto=format&fit=crop&w=900&q=82';
 document.getElementById('galleryDay').src = IMG.factoryDay;
@@ -1850,7 +1857,7 @@ observeReveals();
   if(window.Lenis && window.gsap){
     const lenis = new Lenis({lerp:0.075, smoothWheel:true, syncTouch:false});
     gsap.ticker.add(time => lenis.raf(time * 1000));
-    gsap.ticker.lagSmoothing(0);
+    gsap.ticker.lagSmoothing(500, 33);
     if(window.ScrollTrigger){
       gsap.registerPlugin(ScrollTrigger);
       lenis.on('scroll', ScrollTrigger.update);
