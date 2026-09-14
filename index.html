@@ -102,6 +102,7 @@
   img{max-width:100%; display:block;}
   button{font-family:inherit; cursor:pointer;}
   .wrap{max-width:1180px; margin:0 auto; padding:0 28px;}
+  .wrap, .product-section, .product-grid, .p-card, .contact-card, .network-card{min-width:0;}
   .urdu{font-family:'Jameel Noori Nastaleeq','Noto Nastaliq Urdu','Work Sans',sans-serif; direction:rtl; unicode-bidi:isolate; line-height:2;}
   input,textarea,select{font-family:inherit; font-size:14.5px;}
   ::selection{background:var(--hay); color:var(--charcoal);}
@@ -367,14 +368,14 @@
   .purpose-visual:hover{transform:translateY(-4px); box-shadow:0 20px 38px rgba(0,0,0,.32);}
   .purpose-visual span{position:absolute;left:10px;bottom:8px;color:#fff;font-size:11px;font-weight:700;text-shadow:0 1px 5px #000;}
   .hero{min-height:calc(100svh - 38px); padding:54px 0 42px;}
-  .hero-grid{min-height:calc(100svh - 134px); grid-template-columns:minmax(0,1fr) minmax(460px,.92fr); gap:clamp(32px,5vw,88px);}
+  .hero-grid{min-height:calc(100svh - 134px); grid-template-columns:minmax(0,1fr) minmax(400px,.92fr); gap:clamp(28px,3vw,52px); align-items:start;}
   .hero-grid > div:first-child{position:relative; z-index:4; max-width:700px;}
-  .hero-stage{position:relative; min-height:610px; perspective:1200px;}
+  .hero-stage{position:relative; min-height:560px; perspective:1200px;}
   .hero-stage::before{content:""; position:absolute; width:280px; height:280px; right:-8%; top:4%; border:1px solid rgba(240,180,76,.28); border-radius:50%; box-shadow:0 0 0 28px rgba(240,180,76,.035),0 0 0 56px rgba(240,180,76,.02); animation:stage-orbit 18s linear infinite;}
   .hero-stage::after{content:""; position:absolute; left:7%; bottom:3%; width:210px; height:90px; background:rgba(240,180,76,.16); filter:blur(34px); border-radius:50%; animation:stage-glow 7s ease-in-out infinite alternate;}
   @keyframes stage-orbit{to{transform:rotate(360deg);}}
   @keyframes stage-glow{to{transform:translate(26px,-18px) scale(1.2);opacity:.42;}}
-  .hero-stage .hero-photo{position:absolute; right:2%; top:0; width:min(82%,520px); z-index:2;}
+  .hero-stage .hero-photo{position:absolute; right:0; top:0; width:min(94%,520px); z-index:2;}
   .hero-stage .purpose-visuals{position:absolute; left:0; bottom:16px; width:78%; z-index:3; grid-column:auto; margin:0;}
   .hero-stage .purpose-visual{height:164px; backdrop-filter:blur(8px);}
   .hero-stage .purpose-visual:first-child{transform:translateY(14px) rotate(-2deg);}
@@ -723,6 +724,7 @@
     .form-grid{grid-template-columns:1fr;}
   }
   @media(max-width:560px){
+    .wrap{padding-left:16px; padding-right:16px;}
     .product-grid{grid-template-columns:1fr;}
     .why-grid{grid-template-columns:1fr;}
     .hero-stats{gap:20px;}
@@ -735,6 +737,8 @@
     .gallery-grid.swiper .g-item img,.factory-photo-strip .bs-item img{object-fit:contain; background:#e7dfc9;}
     section{padding:60px 0;}
     .brand-text .t1{font-size:15px;}
+    .drawer{width:100%; border-left:none;}
+    .drawer-head, .drawer-body, .drawer-foot{padding-left:18px; padding-right:18px;}
   }
 
   @media(max-width:920px){
@@ -1437,8 +1441,24 @@ const PRODUCT_SECTIONS = [
   { id:"minerals", label:"Minerals", description:"Targeted mineral and vitamin premixes for growth, milk yield and breeding.", filter:p => p.cat === "mineral" },
 ];
 
-/* ====== STATE (in-memory only) ====== */
-let cart = {}; // id -> qty
+/* ====== STATE ====== */
+const CART_STORAGE_KEY = 'js-cart-v1';
+let cart = loadCart();
+
+function loadCart(){
+  try {
+    const saved = JSON.parse(localStorage.getItem(CART_STORAGE_KEY) || '{}');
+    return Object.fromEntries(Object.entries(saved).filter(([id, qty]) => {
+      return products.some(p => p.id === id) && Number.isInteger(qty) && qty > 0;
+    }));
+  } catch(error) {
+    return {};
+  }
+}
+
+function saveCart(){
+  localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+}
 
 /* ====== INIT IMAGES ====== */
 document.getElementById('logoImg').src = IMG.logo;
@@ -1548,12 +1568,14 @@ function changeQty(id, delta){
   const current = cart[id] || 0;
   const next = Math.max(0, current + delta);
   if(next === 0) delete cart[id]; else cart[id] = next;
+  saveCart();
   renderProducts();
   renderCart();
   updateBadge();
 }
 function removeFromCart(id){
   delete cart[id];
+  saveCart();
   renderProducts();
   renderCart();
   updateBadge();
