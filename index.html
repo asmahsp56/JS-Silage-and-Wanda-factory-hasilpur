@@ -82,7 +82,8 @@
     position:relative;
     isolation:isolate;
   }
-  body::after{content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.2; background-image:linear-gradient(115deg,transparent 0 47%,rgba(184,107,24,.2) 48%,transparent 49%),linear-gradient(25deg,transparent 0 68%,rgba(30,125,60,.16) 69%,transparent 70%); background-size:520px 520px,680px 680px; animation:field-lines 30s linear infinite;}
+  body::after{content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.2; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 520 420' fill='none' stroke='%23a7b39a' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg opacity='.7'%3E%3Cpath d='M104 270c-8-76-25-140-62-194M104 218c-18-31-38-48-68-53M96 188c20-32 44-51 76-59M80 155c-5-29 4-50 25-69M121 242c32-30 62-42 98-40M178 270c-5-87-1-163 32-223M178 201c-20-31-44-45-75-52M190 170c30-31 58-44 91-43M208 114c-5-27 4-50 26-68M241 270c12-83 35-153 82-206M253 205c-16-30-37-48-66-60M271 160c32-25 63-34 95-26M308 108c2-27 16-47 41-59M57 296h98l-12 91H69zM143 296h98l-12 91h-74zM226 296h98l-12 91h-74zM50 296c17 17 75 17 112 0M136 296c17 17 75 17 112 0M219 296c17 17 75 17 112 0M72 387h68M158 387h68M241 387h68'/%3E%3Cpath d='M59 103c29-1 51 9 67 31-29 8-51-2-67-31ZM116 128c14-27 36-40 66-40-13 27-35 40-66 40ZM165 201c28-14 54-12 78 5-27 16-53 14-78-5ZM215 126c26-12 50-8 71 10-26 13-49 10-71-10ZM253 211c27-10 50-4 69 15-26 11-49 6-69-15ZM302 148c22-10 43-5 60 12-22 11-42 7-60-12Z'/%3E%3C/g%3E%3C/svg%3E"),linear-gradient(115deg,transparent 0 47%,rgba(184,107,24,.2) 48%,transparent 49%),linear-gradient(25deg,transparent 0 68%,rgba(30,125,60,.16) 69%,transparent 70%); background-position:right bottom,0 0,0 0; background-repeat:no-repeat,repeat,repeat; background-size:520px 420px,520px 520px,680px 680px; animation:field-lines 30s linear infinite;}
+  html[data-theme="dark"] body::after{opacity:.28;}
   @keyframes field-lines{to{background-position:520px -520px,-680px 680px;}}
   body::before{content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.58; background:radial-gradient(circle at 78% 12%,rgba(217,164,65,.13),transparent 22%),radial-gradient(circle at 30% 78%,rgba(92,107,63,.12),transparent 24%),linear-gradient(120deg,transparent 0 44%,rgba(199,59,48,.04) 50%,transparent 57%); background-size:115% 115%,125% 125%,220% 100%; animation:ambient-drift 18s ease-in-out infinite alternate;}
   @keyframes ambient-drift{0%{background-position:0% 0%,100% 100%,0% 0%;}100%{background-position:100% 35%,0% 65%,100% 0%;}}
@@ -252,6 +253,7 @@
     background:
       radial-gradient(ellipse 900px 500px at 82% -10%, rgba(217,164,65,0.16), transparent 60%),
       radial-gradient(ellipse 700px 500px at 5% 110%, rgba(199,59,48,0.16), transparent 60%),
+      linear-gradient(105deg, rgba(5,24,16,.94), rgba(12,43,29,.82) 54%, rgba(7,24,16,.96)),
       linear-gradient(160deg, var(--deepgreen), var(--deepgreen-2) 70%);
     color:#f6f3e7;
     min-height:calc(100vh - 38px);
@@ -375,6 +377,14 @@
   .hero-photo .cap h3{font-size:19px; margin-bottom:2px; color:#fff;}
   .hero-photo .cap .role{color:var(--hay-bright); font-size:12.5px; font-weight:600;}
   .hero::after{content:""; position:absolute; inset:-20%; z-index:1; pointer-events:none; background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.05) 48%,transparent 60%); transform:translateX(-60%) rotate(8deg); animation:hero-sweep 9s ease-in-out infinite;}
+  .hero::before{content:""; position:absolute; inset:0; z-index:0; pointer-events:none; opacity:.34; background:
+    radial-gradient(ellipse 420px 260px at 78% 33%, rgba(185,48,44,.20), transparent 70%),
+    radial-gradient(ellipse 520px 300px at 16% 84%, rgba(217,164,65,.10), transparent 70%),
+    repeating-linear-gradient(112deg, transparent 0 88px, rgba(143,209,138,.07) 89px 90px, transparent 91px 166px),
+    repeating-linear-gradient(76deg, transparent 0 122px, rgba(240,180,76,.045) 123px 124px, transparent 125px 220px);
+    background-size:auto,auto,520px 520px,680px 680px; animation:field-watermark 26s linear infinite;}
+  @keyframes field-watermark{to{background-position:0 0,0 0,520px -520px,-680px 680px;}}
+  html[data-theme="dark"] .hero::before{opacity:.46;}
   @keyframes hero-sweep{50%,100%{transform:translateX(60%) rotate(8deg);}}
   .purpose-visuals{display:grid; grid-column:2; grid-template-columns:1fr 1fr; gap:12px; margin-top:-8px;}
   .purpose-visual{height:126px; border-radius:18px; overflow:hidden; border:1px solid rgba(246,243,231,.2); position:relative; box-shadow:0 14px 34px rgba(0,0,0,.24); background:#304c35; transform:translateY(0); transition:transform .35s ease, box-shadow .35s ease;}
