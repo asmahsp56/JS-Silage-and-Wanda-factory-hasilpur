@@ -316,10 +316,12 @@
   .hero-reach{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 28px;}
   .hero-reach span{display:inline-flex; align-items:center; gap:7px; padding:8px 11px; border:1px solid rgba(246,243,231,.2); border-radius:999px; background:rgba(246,243,231,.08); color:#f6f3e7; font:600 11px 'JetBrains Mono',monospace; letter-spacing:.03em; backdrop-filter:blur(8px);}
   .hero-reach span::before{content:""; width:6px; height:6px; border-radius:50%; background:var(--hay-bright); box-shadow:0 0 12px var(--hay-bright);}
-  .doctor-intro{display:grid; grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr); align-items:center; gap:16px; max-width:560px; margin:0 0 24px; padding:13px 16px; border-left:2px solid var(--hay-bright); border-radius:0 14px 14px 0; background:rgba(246,243,231,.07); color:#e9e5d6; font-size:13px; line-height:1.65; backdrop-filter:blur(10px);}
+  .doctor-intro{display:grid; grid-template-columns:minmax(0,1fr) minmax(250px,1fr); align-items:stretch; gap:18px; width:min(100%,700px); max-width:none; margin:0 0 24px; padding:13px 16px; border-left:2px solid var(--hay-bright); border-radius:0 14px 14px 0; background:rgba(246,243,231,.07); color:#e9e5d6; font-size:13px; line-height:1.65; backdrop-filter:blur(10px);}
   .doctor-intro-photo{display:block; width:100%; max-width:560px; height:260px; object-fit:cover; object-position:center 22%; border-radius:20px; margin:0; border:1px solid rgba(246,243,231,.28); box-shadow:0 22px 48px rgba(0,0,0,.3);}
-  .doctor-intro-copy{min-width:0;}
+  .doctor-intro-copy{min-width:0; align-self:center; padding:18px 18px 18px 4px;}
   .doctor-intro-copy::before{content:"VETERINARY-LED SUPPLY"; display:block; margin-bottom:9px; color:var(--hay-bright); font:600 10px 'JetBrains Mono',monospace; letter-spacing:.12em;}
+  .doctor-intro-copy::after{content:"Silage  ·  Wanda  ·  Hay  ·  Minerals"; display:block; margin-top:16px; padding-top:12px; border-top:1px solid rgba(246,243,231,.16); color:#d9e6cd; font:500 10px/1.5 'JetBrains Mono',monospace; letter-spacing:.03em;}
+  .doctor-intro-copy strong{display:block; margin-bottom:7px; font-size:16px; line-height:1.25;}
   .doctor-intro strong{color:#fff;}
   .quality-strip{display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-top:28px; max-width:620px;}
   .quality-item{padding:10px 11px; border:1px solid rgba(246,243,231,.15); border-radius:13px; background:rgba(246,243,231,.055); color:#d9e6cd; font-size:10px; line-height:1.3; transition:transform .3s ease, background .3s ease, border-color .3s ease;}
@@ -732,8 +734,9 @@
     .hero-stats{gap:20px;}
     .hero-brand-lockup strong{font-size:17px;}
     .quality-strip{grid-template-columns:1fr 1fr;}
-    .doctor-intro{display:block;}
+    .doctor-intro{display:block; width:100%;}
     .doctor-intro-photo{height:270px; max-width:none; margin-bottom:16px;}
+    .doctor-intro-copy{padding:0 4px 6px;}
     .nutrition-visuals{grid-template-columns:1fr 1fr;}
     .gallery-grid.swiper .g-item,.factory-photo-strip .bs-item{height:300px; min-height:300px;}
     .gallery-grid.swiper .g-item img,.factory-photo-strip .bs-item img{object-fit:contain; background:#e7dfc9;}
@@ -905,7 +908,7 @@
       <span class="eyebrow" id="openStatus">Open Now · 09:00 – 18:00 Daily</span>
       <h1>Feed that raises<br><em>stronger dairy &amp; goats</em>,<br>straight from the farm.</h1>
       <p class="lede">JS Feeds &amp; Fodders supplies A+ quality silage, hay, wanda and mineral mixtures to dairy and goat farmers across Hasilpur — order directly, or ask us for a price on WhatsApp.</p>
-      <div class="doctor-intro"><img id="doctorIntroPhoto" class="doctor-intro-photo" alt="Dr Abdul Basit, Managing Director of JS Feeds &amp; Fodders"><div class="doctor-intro-copy"><strong>Meet Dr Abdul Basit</strong>, Managing Director and practicing veterinary doctor. His hands-on farm consultancy shapes every JS formula for healthier animals, better milk yield, confident growth and stronger herds.</div></div>
+      <div class="doctor-intro"><img id="doctorIntroPhoto" class="doctor-intro-photo" alt="Dr Abdul Basit, Managing Director of JS Feeds &amp; Fodders"><div class="doctor-intro-copy"><strong>Meet Dr Abdul Basit</strong>Managing Director and practicing veterinary doctor. His hands-on farm consultancy shapes every JS formula for healthier animals, better milk yield, confident growth and stronger herds.</div></div>
       <div class="hero-reach" aria-label="Distribution and export coverage">
         <span>Pakistan-wide supply</span>
         <span>UAE export ready</span>
