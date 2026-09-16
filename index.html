@@ -564,17 +564,16 @@
   .product-section-head h3{font-size:25px; color:var(--cream);}
   .product-section-head p{font-size:13px; color:var(--wheat-light); opacity:.75; max-width:430px; text-align:right;}
   @media(max-width:560px){.product-section-head{display:block;}.product-section-head p{text-align:left; margin-top:6px;}}
-  .p-card{background:linear-gradient(145deg,rgba(255,255,255,.78),rgba(243,239,223,.56)); border:1px solid rgba(184,107,24,.18); border-radius:24px; padding:22px; position:relative; overflow:hidden; display:flex; flex-direction:column; transform-style:preserve-3d; backdrop-filter:blur(14px); transition:transform .55s cubic-bezier(.22,1,.36,1), border-color .3s ease, box-shadow .35s ease, background .45s ease;}
+  .p-card{background:linear-gradient(145deg,rgba(255,255,255,.78),rgba(243,239,223,.56)); border:1px solid rgba(184,107,24,.18); border-radius:24px; padding:22px; position:relative; overflow:hidden; display:flex; flex-direction:column; transition:transform .3s ease, border-color .25s ease, box-shadow .25s ease, background .3s ease;}
   .p-card::after{content:""; position:absolute; width:160px; height:160px; right:-74px; top:-78px; border-radius:50%; background:radial-gradient(circle,rgba(240,180,76,.25),transparent 68%); pointer-events:none; transition:transform .6s ease;}
   .p-card::before,.why-card::before,.network-card::before{content:""; position:absolute; inset:0 0 auto; height:2px; background:linear-gradient(90deg,transparent,var(--hay-bright),transparent); opacity:.65; transform:scaleX(.35); transition:transform .45s ease;}
   .p-card:hover::before,.why-card:hover::before,.network-card:hover::before{transform:scaleX(1);}
   .p-card:hover{transform:translateY(-10px) rotateX(1deg) rotateY(-1deg); border-color:rgba(217,164,65,0.55); box-shadow:0 28px 55px rgba(30,40,20,.2), 0 0 0 1px rgba(217,164,65,0.18);}
   .p-card:hover::after{transform:scale(1.5);}
-  .p-media{width:100%; height:170px; border-radius:12px; margin-bottom:16px; display:flex; align-items:center; justify-content:center; background:radial-gradient(ellipse at center, rgba(217,164,65,0.08), rgba(92,107,63,0.05) 70%); overflow:hidden; padding:10px;}
+  .p-media{width:100%; height:230px; border-radius:12px; margin-bottom:16px; display:flex; align-items:center; justify-content:center; background:radial-gradient(ellipse at center, rgba(217,164,65,0.08), rgba(92,107,63,0.05) 70%); overflow:hidden; padding:4px;}
   .p-media{background:linear-gradient(145deg,rgba(239,226,191,.6),rgba(92,107,63,.12)); border:1px solid rgba(184,107,24,.14);}
-  .p-media img{width:100%; height:100%; object-fit:contain; mix-blend-mode:multiply; transition:transform .5s cubic-bezier(.22,1,.36,1), filter .5s ease;}
+  .p-media img{width:100%; height:100%; object-fit:contain; object-position:center; mix-blend-mode:multiply; transition:filter .25s ease;}
   .p-card:hover .p-media img{filter:saturate(1.08) contrast(1.03);}
-  .p-card:hover .p-media img{transform:scale(1.08) rotate(-1deg);}
   .p-media svg{width:52px; height:52px; color:var(--hay-bright); opacity:.9; transition:transform .5s ease;}
   .p-card:hover .p-media svg{transform:scale(1.1);}
   .p-card h4{font-size:17.5px; margin-bottom:2px; letter-spacing:-.02em;}
@@ -770,6 +769,7 @@
     .gallery-grid{grid-template-columns:1fr;}
     .gallery-tall{grid-row:auto;}
     .form-grid{grid-template-columns:1fr;}
+    .p-media{height:210px;}
   }
   @media(max-width:560px){
     .wrap{padding-left:16px; padding-right:16px;}
@@ -788,6 +788,15 @@
     .brand-text .t1{font-size:15px;}
     .drawer{width:100%; border-left:none;}
     .drawer-head, .drawer-body, .drawer-foot{padding-left:18px; padding-right:18px;}
+    .p-media{height:220px;}
+  }
+
+  /* Keep scrolling and painting light on touch devices and modest laptops. */
+  @media(max-width:1200px){
+    header, .doctor-intro, .hero-reach span, .hero-stage .purpose-visual, .hero-stamp, .p-card{backdrop-filter:none;}
+    body::before, body::after, .section-sidebar::before, .hero::before, .hero::after, .grain-bg::after{animation:none;}
+    .factory-svg .silo-fill, .factory-svg .steam, .factory-svg .factory-truck, .factory-svg .truck-wheel, .factory-svg .conveyor-belt-line, .grain-particles span{animation:none;}
+    .p-card{transform-style:flat;}
   }
 
   @media(max-width:920px){
@@ -1528,6 +1537,10 @@ document.getElementById('mdMessagePhoto').src = IMG.portrait;
 document.getElementById('bsTruckNight').src = IMG.aboutTruckNight;
 document.getElementById('bsTruckBags').src = IMG.aboutTruckBags;
 document.getElementById('bsTruckWide').src = IMG.aboutTruckWide;
+document.querySelectorAll('.page-content section:not(.hero) img').forEach(image => {
+  image.loading = 'lazy';
+  image.decoding = 'async';
+});
 
 /* ====== FLOATING GRAIN PARTICLES (hero background) ====== */
 (function(){
@@ -1553,7 +1566,7 @@ document.getElementById('contactWhatsapp').href = waLink("Assalam o Alaikum, I h
 /* ====== RENDER PRODUCTS ====== */
 function productMedia(p){
   if(p.imgKey){
-    return `<img src="${IMG[p.imgKey]}" alt="${p.name} packaging">`;
+    return `<img src="${IMG[p.imgKey]}" alt="${p.name} packaging" loading="lazy" decoding="async">`;
   }
   return artFor(p);
 }
@@ -1660,7 +1673,7 @@ function renderCart(){
     const p = products.find(x => x.id === id);
     return `
     <div class="cart-item">
-      <div class="ci-media">${p.imgKey ? `<img src="${IMG[p.imgKey]}" alt="${p.name}">` : artFor(p)}</div>
+      <div class="ci-media">${p.imgKey ? `<img src="${IMG[p.imgKey]}" alt="${p.name}" loading="lazy" decoding="async">` : artFor(p)}</div>
       <div class="ci-body">
         <h5>${p.name}</h5>
         <div class="ci-price">Price to confirm</div>
@@ -1928,16 +1941,6 @@ observeReveals();
   const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(reduceMotion) return;
 
-  if(window.Lenis && window.gsap){
-    const lenis = new Lenis({lerp:0.075, smoothWheel:true, syncTouch:false});
-    gsap.ticker.add(time => lenis.raf(time * 1000));
-    gsap.ticker.lagSmoothing(500, 33);
-    if(window.ScrollTrigger){
-      gsap.registerPlugin(ScrollTrigger);
-      lenis.on('scroll', ScrollTrigger.update);
-    }
-  }
-
   if(window.gsap){
     const intro = gsap.timeline({defaults:{ease:'power3.out'}});
     intro.from('.hero-brand-lockup', {y:24, autoAlpha:0, duration:.8})
@@ -1949,10 +1952,6 @@ observeReveals();
       gsap.utils.toArray('.reveal').forEach((element) => {
         gsap.fromTo(element, {y:28, autoAlpha:0}, {y:0, autoAlpha:1, duration:.8, ease:'power3.out', scrollTrigger:{trigger:element, start:'top 86%', once:true}});
       });
-      gsap.to('.hero-video', {yPercent:8, ease:'none', scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:true}});
-      gsap.to('.factory-svg', {yPercent:-10, ease:'none', scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:true}});
-      gsap.to('.hero-stage', {yPercent:-6, rotateZ:-.6, ease:'none', scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:true}});
-      gsap.to('.hero-stamp', {rotate:18, y:-16, ease:'none', scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:true}});
     }
   }
 
