@@ -453,50 +453,16 @@
   .section-head.center{margin-left:auto; margin-right:auto; text-align:center;}
 
   /* Each navigation destination is a focused page view. */
-  body.page-about #home, body.page-about .conveyor, body.page-about #how-to-order, body.page-about #gallery, body.page-about #products, body.page-about #why, body.page-about #locations,
-  body.page-products #home, body.page-products .conveyor, body.page-products #how-to-order, body.page-products #about, body.page-products #gallery, body.page-products #why, body.page-products #locations,
-  body.page-feeds #home, body.page-feeds .conveyor, body.page-feeds #how-to-order, body.page-feeds #about, body.page-feeds #gallery, body.page-feeds #why, body.page-feeds #locations,
-  body.page-fodders #home, body.page-fodders .conveyor, body.page-fodders #how-to-order, body.page-fodders #about, body.page-fodders #gallery, body.page-fodders #why, body.page-fodders #locations,
-  body.page-minerals #home, body.page-minerals .conveyor, body.page-minerals #how-to-order, body.page-minerals #about, body.page-minerals #gallery, body.page-minerals #why, body.page-minerals #locations,
-  body.page-gallery #home, body.page-gallery .conveyor, body.page-gallery #how-to-order, body.page-gallery #about, body.page-gallery #products, body.page-gallery #why, body.page-gallery #locations,
-  body.page-locations #home, body.page-locations .conveyor, body.page-locations #how-to-order, body.page-locations #about, body.page-locations #products, body.page-locations #gallery, body.page-locations #why,
-  body.page-contact #home, body.page-contact .conveyor, body.page-contact #how-to-order, body.page-contact #about, body.page-contact #products, body.page-contact #gallery, body.page-contact #why{display:none;}
+  body.page-about #home, body.page-about .conveyor, body.page-about #gallery, body.page-about #products, body.page-about #why, body.page-about #locations,
+  body.page-products #home, body.page-products .conveyor, body.page-products #about, body.page-products #gallery, body.page-products #why, body.page-products #locations,
+  body.page-feeds #home, body.page-feeds .conveyor, body.page-feeds #about, body.page-feeds #gallery, body.page-feeds #why, body.page-feeds #locations,
+  body.page-fodders #home, body.page-fodders .conveyor, body.page-fodders #about, body.page-fodders #gallery, body.page-fodders #why, body.page-fodders #locations,
+  body.page-minerals #home, body.page-minerals .conveyor, body.page-minerals #about, body.page-minerals #gallery, body.page-minerals #why, body.page-minerals #locations,
+  body.page-gallery #home, body.page-gallery .conveyor, body.page-gallery #about, body.page-gallery #products, body.page-gallery #why, body.page-gallery #locations,
+  body.page-locations #home, body.page-locations .conveyor, body.page-locations #about, body.page-locations #products, body.page-locations #gallery, body.page-locations #why,
+  body.page-contact #home, body.page-contact .conveyor, body.page-contact #about, body.page-contact #products, body.page-contact #gallery, body.page-contact #why{display:none;}
   body.page-contact .network-subhead, body.page-contact .network-grid, body.page-contact > .page-content .contact > .wrap > .section-head:first-child{display:none;}
   body.page-locations .contact-grid, body.page-locations .quote-card, body.page-locations #contact + .section-head, body.page-locations #contact + .section-head + .contact-grid{display:none;}
-  /* ---------- QUICK LINKS + HOW TO ORDER (home page) ---------- */
-  .quicklinks-section{padding:34px 0 86px;}
-  .quicklinks-row{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:64px;}
-  .quicklink-card{display:flex; align-items:center; gap:12px; padding:16px 18px; border-radius:16px;
-    border:1px solid var(--line); background:rgba(217,164,65,.06); transition:transform .25s ease, box-shadow .25s ease, background .25s ease;}
-  .quicklink-card:hover{transform:translateY(-3px); box-shadow:0 14px 30px rgba(0,0,0,.12); background:rgba(217,164,65,.12);}
-  .quicklink-card.quicklink-whatsapp{background:rgba(30,125,60,.08);}
-  .quicklink-card.quicklink-whatsapp:hover{background:rgba(30,125,60,.14);}
-  .ql-icon{flex:0 0 auto; width:38px; height:38px; display:flex; align-items:center; justify-content:center;
-    border-radius:11px; background:rgba(217,164,65,.16); font-size:17px;}
-  .ql-text{flex:1; min-width:0; display:flex; flex-direction:column; gap:2px;}
-  .ql-text strong{font-size:14px; color:var(--cream);}
-  .ql-text small{font-size:12px; opacity:.7;}
-  .ql-arrow{flex:0 0 auto; color:var(--hay); font-size:16px; transition:transform .25s ease;}
-  .quicklink-card:hover .ql-arrow{transform:translateX(4px);}
-  .order-steps{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:44px;}
-  .order-step{padding:26px 22px; border-radius:18px; border:1px solid var(--line); background:var(--charcoal-2);}
-  .os-num{display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; margin-bottom:16px;
-    border-radius:50%; background:rgba(217,164,65,.14); color:var(--hay); font:700 12px 'JetBrains Mono',monospace;}
-  .order-step h3{font-size:19px; margin-bottom:8px;}
-  .order-step p{font-size:13.5px; opacity:.78; line-height:1.55;}
-  .order-help{display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;
-    margin-top:26px; padding:22px 26px; border-radius:18px; border:1px solid var(--line); background:rgba(30,125,60,.07);}
-  .order-help strong{display:block; font-size:15.5px; margin-bottom:4px;}
-  .order-help span{font-size:13px; opacity:.75;}
-  @media(max-width:920px){
-    .quicklinks-row{grid-template-columns:1fr 1fr;}
-    .order-steps{grid-template-columns:1fr 1fr;}
-  }
-  @media(max-width:560px){
-    .quicklinks-row{grid-template-columns:1fr;}
-    .order-steps{grid-template-columns:1fr;}
-    .order-help{flex-direction:column; align-items:flex-start;}
-  }
   body.page-feeds #products .product-section:not(#feeds), body.page-fodders #products .product-section:not(#fodders), body.page-minerals #products .product-section:not(#minerals){display:none;}
   body.page-home #about, body.page-home #products, body.page-home #why, body.page-home #locations{display:none;}
   body.page-home #contact, body.page-about #contact, body.page-products #contact, body.page-feeds #contact, body.page-fodders #contact, body.page-minerals #contact, body.page-gallery #contact, body.page-locations #contact{display:none;}
@@ -1129,51 +1095,6 @@
   </div>
 </div>
 
-<section class="quicklinks-section" id="how-to-order">
-  <div class="wrap">
-    <div class="quicklinks-row" aria-label="Browse JS Feeds and Fodders">
-      <a class="quicklink-card" href="index.html?page=feeds">
-        <span class="ql-icon">🌾</span>
-        <span class="ql-text"><strong>Explore Feeds</strong><small>Wanda &amp; compound feed</small></span>
-        <span class="ql-arrow">→</span>
-      </a>
-      <a class="quicklink-card" href="index.html?page=fodders">
-        <span class="ql-icon">🌿</span>
-        <span class="ql-text"><strong>Explore Fodders</strong><small>Silage, hay &amp; straw</small></span>
-        <span class="ql-arrow">→</span>
-      </a>
-      <a class="quicklink-card" href="index.html?page=minerals">
-        <span class="ql-icon">🧪</span>
-        <span class="ql-text"><strong>Explore Minerals</strong><small>Cattle &amp; goat premixes</small></span>
-        <span class="ql-arrow">→</span>
-      </a>
-      <a class="quicklink-card quicklink-whatsapp" id="quicklinkWhatsapp" href="#" target="_blank" rel="noopener">
-        <span class="ql-icon">💬</span>
-        <span class="ql-text"><strong>Ask for a Price</strong><small>Message us on WhatsApp</small></span>
-        <span class="ql-arrow">→</span>
-      </a>
-    </div>
-
-    <div class="section-head center reveal">
-      <span class="section-tag">Simple Ordering</span>
-      <h2>How to order from JS Feeds &amp; Fodders</h2>
-      <p>Choose what you need, send your requirements and let the team confirm the current price and delivery details.</p>
-    </div>
-
-    <div class="order-steps">
-      <div class="order-step reveal"><span class="os-num">01</span><h3>Choose</h3><p>Browse feeds, fodders and mineral products.</p></div>
-      <div class="order-step reveal"><span class="os-num">02</span><h3>Enquire</h3><p>Ask for the current rate, quantity and availability.</p></div>
-      <div class="order-step reveal"><span class="os-num">03</span><h3>Confirm</h3><p>Share your city, delivery address and requirements.</p></div>
-      <div class="order-step reveal"><span class="os-num">04</span><h3>Receive</h3><p>The team confirms delivery arrangements with you.</p></div>
-    </div>
-
-    <div class="order-help reveal">
-      <div><strong>Need help choosing a product?</strong><span>Ask Dr Abdul Basit or the JS Feeds &amp; Fodders team.</span></div>
-      <a class="btn btn-whatsapp" id="orderHelpWhatsapp" href="#" target="_blank" rel="noopener">Ask on WhatsApp</a>
-    </div>
-  </div>
-</section>
-
 <section class="about grain-bg" id="about">
   <div class="wrap">
 
@@ -1734,7 +1655,14 @@ document.getElementById('logoImg').src = IMG.logo;
 document.getElementById('sidebarLogoImg').src = IMG.logo;
 document.getElementById('heroLogo').src = IMG.logo;
 document.getElementById('doctorIntroPhoto').src = IMG.portrait;
-document.getElementById('heroFarmScene').src = 'https://images.unsplash.com/photo-1500076656116-558758c991c1?auto=format&fit=crop&w=1100&q=85';
+const heroFarmSceneImg = document.getElementById('heroFarmScene');
+if(window.matchMedia('(min-width:921px)').matches){
+  /* Laptop: the big hero photo below Dr Abdul Basit shows the factory */
+  heroFarmSceneImg.src = IMG.factoryDay;
+  heroFarmSceneImg.alt = 'JS Silage Wanda Factory, Hasilpur — loading feed for dispatch';
+} else {
+  heroFarmSceneImg.src = 'https://images.unsplash.com/photo-1500076656116-558758c991c1?auto=format&fit=crop&w=1100&q=85';
+}
 document.getElementById('heroCattle').src = 'https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=900&q=82';
 document.getElementById('heroGoat').src = 'https://images.unsplash.com/photo-1533318087102-b3ad366ed041?auto=format&fit=crop&w=900&q=82';
 document.getElementById('galleryDay').src = IMG.factoryDay;
@@ -1748,8 +1676,9 @@ document.getElementById('aboutDoctorPhoto').src = IMG.portrait2;
   set('aboutStripSilage', IMG.silageBales3);
   set('aboutStripMineral', IMG.cattleMineral);
   set('aboutStripFactory', IMG.factoryDay);
-  set('aboutExtraPhoto', IMG.aboutTruckWide);
 })();
+const aboutExtraImg = document.getElementById('aboutExtraPhoto');
+if(aboutExtraImg) aboutExtraImg.src = IMG.aboutTruckWide;
 document.getElementById('mdMessagePhoto').src = IMG.portrait;
 document.getElementById('bsTruckNight').src = IMG.aboutTruckNight;
 document.getElementById('bsTruckBags').src = IMG.aboutTruckBags;
@@ -1779,10 +1708,6 @@ document.querySelectorAll('.page-content section:not(.hero) img').forEach(image 
 const waLink = (text) => `https://wa.me/${WHATSAPP_PRIMARY}?text=${encodeURIComponent(text)}`;
 document.getElementById('heroWhatsapp').href = waLink("Assalam o Alaikum, I'd like to know more about JS Feeds & Fodders products.");
 document.getElementById('contactWhatsapp').href = waLink("Assalam o Alaikum, I have a question about JS Feeds & Fodders products.");
-const quicklinkWa = document.getElementById('quicklinkWhatsapp');
-if(quicklinkWa) quicklinkWa.href = waLink("Assalam o Alaikum, can you please share your current price list?");
-const orderHelpWa = document.getElementById('orderHelpWhatsapp');
-if(orderHelpWa) orderHelpWa.href = waLink("Assalam o Alaikum, I need help choosing the right product for my farm.");
 const aboutExtraWa = document.getElementById('aboutExtraWhatsapp');
 if(aboutExtraWa) aboutExtraWa.href = waLink("Assalam o Alaikum Dr Abdul Basit, I'd like some advice for my farm.");
 
