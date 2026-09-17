@@ -453,16 +453,50 @@
   .section-head.center{margin-left:auto; margin-right:auto; text-align:center;}
 
   /* Each navigation destination is a focused page view. */
-  body.page-about #home, body.page-about .conveyor, body.page-about #gallery, body.page-about #products, body.page-about #why, body.page-about #locations,
-  body.page-products #home, body.page-products .conveyor, body.page-products #about, body.page-products #gallery, body.page-products #why, body.page-products #locations,
-  body.page-feeds #home, body.page-feeds .conveyor, body.page-feeds #about, body.page-feeds #gallery, body.page-feeds #why, body.page-feeds #locations,
-  body.page-fodders #home, body.page-fodders .conveyor, body.page-fodders #about, body.page-fodders #gallery, body.page-fodders #why, body.page-fodders #locations,
-  body.page-minerals #home, body.page-minerals .conveyor, body.page-minerals #about, body.page-minerals #gallery, body.page-minerals #why, body.page-minerals #locations,
-  body.page-gallery #home, body.page-gallery .conveyor, body.page-gallery #about, body.page-gallery #products, body.page-gallery #why, body.page-gallery #locations,
-  body.page-locations #home, body.page-locations .conveyor, body.page-locations #about, body.page-locations #products, body.page-locations #gallery, body.page-locations #why,
-  body.page-contact #home, body.page-contact .conveyor, body.page-contact #about, body.page-contact #products, body.page-contact #gallery, body.page-contact #why{display:none;}
+  body.page-about #home, body.page-about .conveyor, body.page-about #how-to-order, body.page-about #gallery, body.page-about #products, body.page-about #why, body.page-about #locations,
+  body.page-products #home, body.page-products .conveyor, body.page-products #how-to-order, body.page-products #about, body.page-products #gallery, body.page-products #why, body.page-products #locations,
+  body.page-feeds #home, body.page-feeds .conveyor, body.page-feeds #how-to-order, body.page-feeds #about, body.page-feeds #gallery, body.page-feeds #why, body.page-feeds #locations,
+  body.page-fodders #home, body.page-fodders .conveyor, body.page-fodders #how-to-order, body.page-fodders #about, body.page-fodders #gallery, body.page-fodders #why, body.page-fodders #locations,
+  body.page-minerals #home, body.page-minerals .conveyor, body.page-minerals #how-to-order, body.page-minerals #about, body.page-minerals #gallery, body.page-minerals #why, body.page-minerals #locations,
+  body.page-gallery #home, body.page-gallery .conveyor, body.page-gallery #how-to-order, body.page-gallery #about, body.page-gallery #products, body.page-gallery #why, body.page-gallery #locations,
+  body.page-locations #home, body.page-locations .conveyor, body.page-locations #how-to-order, body.page-locations #about, body.page-locations #products, body.page-locations #gallery, body.page-locations #why,
+  body.page-contact #home, body.page-contact .conveyor, body.page-contact #how-to-order, body.page-contact #about, body.page-contact #products, body.page-contact #gallery, body.page-contact #why{display:none;}
   body.page-contact .network-subhead, body.page-contact .network-grid, body.page-contact > .page-content .contact > .wrap > .section-head:first-child{display:none;}
   body.page-locations .contact-grid, body.page-locations .quote-card, body.page-locations #contact + .section-head, body.page-locations #contact + .section-head + .contact-grid{display:none;}
+  /* ---------- QUICK LINKS + HOW TO ORDER (home page) ---------- */
+  .quicklinks-section{padding:34px 0 86px;}
+  .quicklinks-row{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:64px;}
+  .quicklink-card{display:flex; align-items:center; gap:12px; padding:16px 18px; border-radius:16px;
+    border:1px solid var(--line); background:rgba(217,164,65,.06); transition:transform .25s ease, box-shadow .25s ease, background .25s ease;}
+  .quicklink-card:hover{transform:translateY(-3px); box-shadow:0 14px 30px rgba(0,0,0,.12); background:rgba(217,164,65,.12);}
+  .quicklink-card.quicklink-whatsapp{background:rgba(30,125,60,.08);}
+  .quicklink-card.quicklink-whatsapp:hover{background:rgba(30,125,60,.14);}
+  .ql-icon{flex:0 0 auto; width:38px; height:38px; display:flex; align-items:center; justify-content:center;
+    border-radius:11px; background:rgba(217,164,65,.16); font-size:17px;}
+  .ql-text{flex:1; min-width:0; display:flex; flex-direction:column; gap:2px;}
+  .ql-text strong{font-size:14px; color:var(--cream);}
+  .ql-text small{font-size:12px; opacity:.7;}
+  .ql-arrow{flex:0 0 auto; color:var(--hay); font-size:16px; transition:transform .25s ease;}
+  .quicklink-card:hover .ql-arrow{transform:translateX(4px);}
+  .order-steps{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:44px;}
+  .order-step{padding:26px 22px; border-radius:18px; border:1px solid var(--line); background:var(--charcoal-2);}
+  .os-num{display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; margin-bottom:16px;
+    border-radius:50%; background:rgba(217,164,65,.14); color:var(--hay); font:700 12px 'JetBrains Mono',monospace;}
+  .order-step h3{font-size:19px; margin-bottom:8px;}
+  .order-step p{font-size:13.5px; opacity:.78; line-height:1.55;}
+  .order-help{display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;
+    margin-top:26px; padding:22px 26px; border-radius:18px; border:1px solid var(--line); background:rgba(30,125,60,.07);}
+  .order-help strong{display:block; font-size:15.5px; margin-bottom:4px;}
+  .order-help span{font-size:13px; opacity:.75;}
+  @media(max-width:920px){
+    .quicklinks-row{grid-template-columns:1fr 1fr;}
+    .order-steps{grid-template-columns:1fr 1fr;}
+  }
+  @media(max-width:560px){
+    .quicklinks-row{grid-template-columns:1fr;}
+    .order-steps{grid-template-columns:1fr;}
+    .order-help{flex-direction:column; align-items:flex-start;}
+  }
   body.page-feeds #products .product-section:not(#feeds), body.page-fodders #products .product-section:not(#fodders), body.page-minerals #products .product-section:not(#minerals){display:none;}
   body.page-home #about, body.page-home #products, body.page-home #why, body.page-home #locations{display:none;}
   body.page-home #contact, body.page-about #contact, body.page-products #contact, body.page-feeds #contact, body.page-fodders #contact, body.page-minerals #contact, body.page-gallery #contact, body.page-locations #contact{display:none;}
@@ -825,6 +859,89 @@
     .factory-svg .silo-fill, .factory-svg .steam, .factory-svg .factory-truck, .factory-svg .truck-wheel, .factory-svg .conveyor-belt-line{animation:none;}
     .grain-particles span{animation:none; display:none;}
   }
+
+  /* ---------- LAPTOP ONLY: hero re-ordering (mobile untouched) ---------- */
+  .about-extra{display:none;}
+  @media(min-width:921px){
+    /* Single vertical flow: headline -> lede -> Dr Abdul Basit card -> factory/farm image below */
+    .hero-grid{grid-template-columns:1fr; max-width:980px; margin:0 auto; gap:30px;}
+    .hero-grid > div:first-child{display:flex; flex-direction:column; max-width:none;}
+    .hero-grid > div:first-child > .hero-brand-lockup{order:0;}
+    .hero-grid > div:first-child > .eyebrow{order:1;}
+    .hero-grid > div:first-child > h1{order:2;}
+    .hero-grid > div:first-child > .lede{order:3;}
+    .hero-grid > div:first-child > .doctor-intro{order:4; margin:6px 0 4px;}
+    .hero-grid > div:first-child > .hero-reach{order:5;}
+    .hero-grid > div:first-child > .hero-actions{order:6;}
+    .hero-grid > div:first-child > .hero-stats{order:7;}
+    .hero-grid > div:first-child > .quality-strip{order:8;}
+
+    /* Farm / nutrition-facility image sits full width below everything above */
+    .hero-stage{position:relative; min-height:0; width:100%; margin-top:6px; perspective:none;}
+    .hero-stage::before, .hero-stage::after{display:none;}
+    .hero-stage .hero-photo{position:relative; right:auto; top:auto; width:100%; z-index:2;}
+    .hero-stage .hero-photo img{height:420px;}
+    .hero-stage .purpose-visuals{position:absolute; left:20px; bottom:20px; width:56%; z-index:3;}
+    .hero-stage .hero-stamp{right:20px; bottom:auto; top:20px;}
+
+    /* Blended / feathered corners on the farm-nutrition photo for a softer look */
+    .hero-stage .hero-photo{border-radius:26px; box-shadow:none; background:transparent; overflow:hidden;}
+    .hero-stage .hero-photo img{
+      border-radius:26px;
+      -webkit-mask-image:radial-gradient(ellipse 82% 84% at center, #000 68%, transparent 100%);
+      mask-image:radial-gradient(ellipse 82% 84% at center, #000 68%, transparent 100%);
+      filter:saturate(.96) contrast(1.05);
+    }
+
+    /* About Us — fills the blank space in the left panel */
+    .about-extra{display:block; margin-top:26px; padding-top:22px; border-top:1px solid var(--line);}
+    .about-extra h4{font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+      color:var(--hay); font-family:'JetBrains Mono',monospace; margin-bottom:14px;}
+    .ae-stats{display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-bottom:24px;}
+    .ae-stat{border:1px solid var(--line); border-radius:14px; padding:14px 15px; background:rgba(217,164,65,.05);}
+    .ae-stat strong{display:block; font-family:'Bodoni Moda',serif; font-size:22px; color:var(--cream); line-height:1;}
+    .ae-stat span{display:block; margin-top:6px; font-size:12px; opacity:.78; line-height:1.45;}
+    .ae-photo{position:relative; border-radius:14px; overflow:hidden; border:1px solid var(--line); margin-bottom:22px;}
+    .ae-photo img{width:100%; height:178px; object-fit:cover; display:block; transition:transform .6s ease;}
+    .ae-photo:hover img{transform:scale(1.06);}
+    .ae-photo figcaption{position:absolute; left:0; right:0; bottom:0; padding:22px 13px 10px;
+      background:linear-gradient(180deg,transparent,rgba(4,14,9,.88)); color:#fff; font-size:12px; font-weight:600;}
+    .ae-list{list-style:none; display:flex; flex-direction:column; gap:12px; margin-bottom:22px;}
+    .ae-list li{display:flex; gap:11px; align-items:flex-start; font-size:13.5px; line-height:1.6; opacity:.88;}
+    .ae-list li::before{content:"✓"; flex:0 0 auto; width:20px; height:20px; margin-top:1px;
+      display:flex; align-items:center; justify-content:center; border-radius:50%;
+      background:rgba(30,125,60,.16); color:var(--green); font-size:11px; font-weight:800;}
+    .ae-contact{border:1px solid var(--line); border-radius:14px; padding:16px; background:var(--charcoal-2);}
+    .ae-contact .ae-row{display:flex; justify-content:space-between; gap:12px; font-size:13px; padding:7px 0;}
+    .ae-contact .ae-row + .ae-row{border-top:1px solid var(--line);}
+    .ae-contact .ae-row span:first-child{opacity:.65;}
+    .ae-contact .ae-row span:last-child, .ae-contact .ae-row a{font-weight:600; color:var(--cream); text-align:right;}
+    .ae-contact .ae-row a:hover{color:var(--hay);}
+    .ae-cta{display:flex; align-items:center; justify-content:center; gap:8px; margin-top:14px;
+      padding:12px 16px; border-radius:100px; background:var(--green); color:#fff;
+      font-size:13.5px; font-weight:700; transition:filter .2s ease, transform .2s ease;}
+    .ae-cta:hover{filter:brightness(1.08); transform:translateY(-2px);}
+
+    /* About Us intro — product photo strip beside the paragraph */
+    .about-head{display:grid; grid-template-columns:1.05fr .95fr; gap:40px; align-items:center; max-width:none;}
+    .about-head-strip{
+      display:grid; grid-template-columns:repeat(5,1fr); gap:0; height:230px;
+      border-radius:20px; overflow:hidden; border:1px solid var(--line); box-shadow:var(--shadow);
+      -webkit-mask-image:radial-gradient(ellipse 96% 100% at center, #000 78%, transparent 100%);
+      mask-image:radial-gradient(ellipse 96% 100% at center, #000 78%, transparent 100%);
+    }
+    .about-head-strip img{width:100%; height:100%; object-fit:cover; filter:saturate(1.03);}
+
+    /* Specialty badge floating above the Managing Director's message */
+    .md-specialty-tag{
+      display:inline-flex; align-items:center; gap:12px; margin-bottom:16px; padding:12px 18px;
+      border:1px solid var(--line); border-radius:16px; background:rgba(217,164,65,.06);
+    }
+    .md-specialty-tag .ic{width:34px; height:34px; display:flex; align-items:center; justify-content:center;
+      border-radius:10px; background:rgba(217,164,65,.14); font-size:16px;}
+    .md-specialty-tag strong{display:block; font-size:13.5px; color:var(--cream);}
+    .md-specialty-tag span{display:block; font-size:12px; opacity:.72; margin-top:1px;}
+  }
 </style>
 </head>
 <body>
@@ -1012,14 +1129,64 @@
   </div>
 </div>
 
+<section class="quicklinks-section" id="how-to-order">
+  <div class="wrap">
+    <div class="quicklinks-row" aria-label="Browse JS Feeds and Fodders">
+      <a class="quicklink-card" href="index.html?page=feeds">
+        <span class="ql-icon">🌾</span>
+        <span class="ql-text"><strong>Explore Feeds</strong><small>Wanda &amp; compound feed</small></span>
+        <span class="ql-arrow">→</span>
+      </a>
+      <a class="quicklink-card" href="index.html?page=fodders">
+        <span class="ql-icon">🌿</span>
+        <span class="ql-text"><strong>Explore Fodders</strong><small>Silage, hay &amp; straw</small></span>
+        <span class="ql-arrow">→</span>
+      </a>
+      <a class="quicklink-card" href="index.html?page=minerals">
+        <span class="ql-icon">🧪</span>
+        <span class="ql-text"><strong>Explore Minerals</strong><small>Cattle &amp; goat premixes</small></span>
+        <span class="ql-arrow">→</span>
+      </a>
+      <a class="quicklink-card quicklink-whatsapp" id="quicklinkWhatsapp" href="#" target="_blank" rel="noopener">
+        <span class="ql-icon">💬</span>
+        <span class="ql-text"><strong>Ask for a Price</strong><small>Message us on WhatsApp</small></span>
+        <span class="ql-arrow">→</span>
+      </a>
+    </div>
+
+    <div class="section-head center reveal">
+      <span class="section-tag">Simple Ordering</span>
+      <h2>How to order from JS Feeds &amp; Fodders</h2>
+      <p>Choose what you need, send your requirements and let the team confirm the current price and delivery details.</p>
+    </div>
+
+    <div class="order-steps">
+      <div class="order-step reveal"><span class="os-num">01</span><h3>Choose</h3><p>Browse feeds, fodders and mineral products.</p></div>
+      <div class="order-step reveal"><span class="os-num">02</span><h3>Enquire</h3><p>Ask for the current rate, quantity and availability.</p></div>
+      <div class="order-step reveal"><span class="os-num">03</span><h3>Confirm</h3><p>Share your city, delivery address and requirements.</p></div>
+      <div class="order-step reveal"><span class="os-num">04</span><h3>Receive</h3><p>The team confirms delivery arrangements with you.</p></div>
+    </div>
+
+    <div class="order-help reveal">
+      <div><strong>Need help choosing a product?</strong><span>Ask Dr Abdul Basit or the JS Feeds &amp; Fodders team.</span></div>
+      <a class="btn btn-whatsapp" id="orderHelpWhatsapp" href="#" target="_blank" rel="noopener">Ask on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
 <section class="about grain-bg" id="about">
   <div class="wrap">
 
     <!-- 1. ABOUT US -->
-    <div class="section-head reveal">
-      <span class="section-tag">About Us</span>
-      <h2>A veterinary-led livestock nutrition business.</h2>
-      <p>JS Feeds &amp; Fodders is a Hasilpur-based feed and fodder supplier serving cattle and goat farmers across Punjab. What began as farm-level consultancy for dairy and goat owners has grown into a dedicated silage, hay, wanda and mineral-mixture business — one where every product is shaped by real veterinary and livestock-management experience, not just manufactured and sold. Our focus stays on the essentials that matter to a working farm: milk yield, weight gain, breeding, and everyday herd health, at fair and consistent rates.</p>
+    <div class="section-head reveal about-head">
+      <div class="about-head-copy">
+        <span class="section-tag">About Us</span>
+        <h2>A veterinary-led livestock nutrition business.</h2>
+        <p>JS Feeds &amp; Fodders is a Hasilpur-based feed and fodder supplier serving cattle and goat farmers across Punjab. What began as farm-level consultancy for dairy and goat owners has grown into a dedicated silage, hay, wanda and mineral-mixture business — one where every product is shaped by real veterinary and livestock-management experience, not just manufactured and sold. Our focus stays on the essentials that matter to a working farm: milk yield, weight gain, breeding, and everyday herd health, at fair and consistent rates.</p>
+      </div>
+      <div class="about-head-strip" aria-label="JS Feeds and Fodders products">
+        <img id="aboutStripBags" alt="JS Wanda and mineral feed bags"><img id="aboutStripHay" alt="Alfalfa and Rhode grass hay bales"><img id="aboutStripSilage" alt="Fermented silage bales"><img id="aboutStripMineral" alt="Goat and cattle mineral mixture"><img id="aboutStripFactory" alt="JS Silage Wanda Factory">
+      </div>
     </div>
 
     <!-- 2. ABOUT DR ABDUL BASIT -->
@@ -1033,12 +1200,53 @@
           <li><span class="ic">🩺</span><div><strong>Practice</strong><br><span style="opacity:.75; font-size:13.5px;">Veterinary Doctor &amp; Farm Consultant</span></div></li>
           <li><span class="ic">🐐</span><div><strong>Specialty</strong><br><span style="opacity:.75; font-size:13.5px;">Dairy cattle &amp; goat nutrition</span></div></li>
         </ul>
+
+        <!-- LAPTOP ONLY: fills the empty space beside the long right column -->
+        <div class="about-extra">
+          <h4>At A Glance</h4>
+          <div class="ae-stats">
+            <div class="ae-stat"><strong>12+</strong><span>Feed &amp; fodder products</span></div>
+            <div class="ae-stat"><strong>A+</strong><span>Export quality grade</span></div>
+            <div class="ae-stat"><strong>7 Days</strong><span>Open every week</span></div>
+            <div class="ae-stat"><strong>2</strong><span>Factories in Punjab</span></div>
+          </div>
+
+          <figure class="ae-photo">
+            <img id="aboutExtraPhoto" alt="JS Silage Wanda Factory, Hasilpur — loading feed for dispatch">
+            <figcaption>JS Silage Wanda Factory · Hasilpur</figcaption>
+          </figure>
+
+          <h4>What We Stand For</h4>
+          <ul class="ae-list">
+            <li>Silage fermented properly and packed in 45kg bags or 80kg bales.</li>
+            <li>Wanda and mineral mixtures blended for milk, meat, breeding and growth.</li>
+            <li>Alfalfa hay and Rhode grass produced to export-quality standards.</li>
+            <li>Honest advice first — we'll tell you what your herd actually needs.</li>
+            <li>Direct farmer pricing, with rates confirmed before every order.</li>
+          </ul>
+
+          <h4>Reach The Office</h4>
+          <div class="ae-contact">
+            <div class="ae-row"><span>Factory &amp; Office</span><span>Dholan Wala Pull, Talhar Road, Hasilpur</span></div>
+            <div class="ae-row"><span>Timings</span><span>09:00 AM – 06:00 PM</span></div>
+            <div class="ae-row"><span>Phone</span><a href="tel:+923332827158">0333-2827158</a></div>
+            <div class="ae-row"><span>Email</span><a href="mailto:drabhsp@gmail.com">drabhsp@gmail.com</a></div>
+            <a class="ae-cta" id="aboutExtraWhatsapp" href="#" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2z"/></svg>
+              Ask Dr Abdul Basit on WhatsApp
+            </a>
+          </div>
+        </div>
       </div>
       <div class="about-body">
         <span class="section-tag">About Dr Abdul Basit</span>
         <h2 style="margin-bottom:20px;">From veterinary knowledge to practical farm solutions.</h2>
         <p>Dr Abdul Basit is the Managing Director of JS Feeds &amp; Fodders in Hasilpur, and a practicing veterinary doctor with a background in livestock management. His clinical training and hands-on farm consultancy work directly inform how every JS product is formulated — from the silage fermentation process to the mineral mixtures blended for breeding season.</p>
         <p>The JS Silage Wanda Factory produces and supplies silage, hay, wanda (compound feed) and mineral mixtures formulated for the specific needs of dairy cattle and goats — from milk yield and weight gain to breeding and growth.</p>
+        <div class="md-specialty-tag">
+          <span class="ic">🐐</span>
+          <div><strong>Specialty</strong><span>Dairy cattle &amp; goat nutrition</span></div>
+        </div>
         <div class="md-message reveal">
           <img id="mdMessagePhoto" class="md-message-photo" alt="Dr Abdul Basit">
           <div class="md-message-body">
@@ -1533,6 +1741,15 @@ document.getElementById('galleryDay').src = IMG.factoryDay;
 document.getElementById('galleryNight').src = IMG.factoryNight;
 document.getElementById('gallerySilageBales').src = IMG.silageBales3;
 document.getElementById('aboutDoctorPhoto').src = IMG.portrait2;
+(function(){
+  const set = (id, src) => { const el = document.getElementById(id); if(el) el.src = src; };
+  set('aboutStripBags', IMG.bagTmr);
+  set('aboutStripHay', IMG.alfalfaBale);
+  set('aboutStripSilage', IMG.silageBales3);
+  set('aboutStripMineral', IMG.cattleMineral);
+  set('aboutStripFactory', IMG.factoryDay);
+  set('aboutExtraPhoto', IMG.aboutTruckWide);
+})();
 document.getElementById('mdMessagePhoto').src = IMG.portrait;
 document.getElementById('bsTruckNight').src = IMG.aboutTruckNight;
 document.getElementById('bsTruckBags').src = IMG.aboutTruckBags;
@@ -1562,6 +1779,12 @@ document.querySelectorAll('.page-content section:not(.hero) img').forEach(image 
 const waLink = (text) => `https://wa.me/${WHATSAPP_PRIMARY}?text=${encodeURIComponent(text)}`;
 document.getElementById('heroWhatsapp').href = waLink("Assalam o Alaikum, I'd like to know more about JS Feeds & Fodders products.");
 document.getElementById('contactWhatsapp').href = waLink("Assalam o Alaikum, I have a question about JS Feeds & Fodders products.");
+const quicklinkWa = document.getElementById('quicklinkWhatsapp');
+if(quicklinkWa) quicklinkWa.href = waLink("Assalam o Alaikum, can you please share your current price list?");
+const orderHelpWa = document.getElementById('orderHelpWhatsapp');
+if(orderHelpWa) orderHelpWa.href = waLink("Assalam o Alaikum, I need help choosing the right product for my farm.");
+const aboutExtraWa = document.getElementById('aboutExtraWhatsapp');
+if(aboutExtraWa) aboutExtraWa.href = waLink("Assalam o Alaikum Dr Abdul Basit, I'd like some advice for my farm.");
 
 /* ====== RENDER PRODUCTS ====== */
 function productMedia(p){
