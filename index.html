@@ -5,7 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JS Feeds &amp; Fodders | Livestock Nutrition by Dr Abdul Basit</title>
 <meta name="description" content="Veterinary-led silage, hay, wanda and mineral mixtures for dairy cattle and goats. JS Feeds & Fodders serves Hasilpur, Gojra, Rawalpindi and Pakistan, with UAE export availability.">
+<link rel="icon" type="image/png" sizes="128x128" href="favicon.png?v=1">
+<link rel="apple-touch-icon" href="favicon.png?v=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 <style>
@@ -683,7 +686,7 @@
   .gallery-pagination{bottom:0!important;}
   .gallery-pagination .swiper-pagination-bullet{background:var(--hay); opacity:.4; transition:transform .25s ease, opacity .25s ease;}
   .gallery-pagination .swiper-pagination-bullet-active{opacity:1; transform:scale(1.25);}
-  #gallery{position:relative; overflow:hidden; background:url('factory-visit-crop-field.png') center/cover fixed;}
+  #gallery{position:relative; overflow:hidden; background:url('factory-visit-crop-field.jpg') center/cover fixed;}
   #gallery .wrap{position:relative; z-index:1;}
   .gallery-video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.08; filter:saturate(.7) contrast(1.1); pointer-events:none;}
   #gallery::after{content:""; position:absolute; inset:0; background:linear-gradient(90deg,rgba(10,25,16,.42),rgba(10,25,16,.28)); pointer-events:none;}
@@ -783,7 +786,7 @@
   .why-card p{font-size:13.8px; color:var(--wheat-light); opacity:0.88;}
 
   /* ---------- CONTACT ---------- */
-  .contact{background:linear-gradient(rgba(8,24,16,.56),rgba(8,24,16,.62)),url('contact-fields-sunset.png') center/cover fixed; border-top:1px solid var(--line);}
+  .contact{background:linear-gradient(rgba(8,24,16,.56),rgba(8,24,16,.62)),url('contact-fields-sunset.jpg') center/cover fixed; border-top:1px solid var(--line);}
   .network-subhead{
     font-family:'Fraunces',serif; font-size:19px; font-weight:700; color:var(--cream);
     margin:36px 0 18px; display:flex; align-items:center; gap:8px;
@@ -1059,6 +1062,18 @@
     .network-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
     .warehouse-grid{grid-template-columns:repeat(3,minmax(0,1fr));}
   }
+  /* Keep decorative backgrounds still so scrolling does not trigger repeated repaints. */
+  body::before,body::after,.section-sidebar::before,.nav-cta,
+  .factory-svg .silo-fill,.factory-svg .conveyor-belt-line,.factory-svg .steam,
+  .factory-svg .factory-truck,.factory-svg .truck-wheel,.grain-particles span,
+  .btn-primary,.btn-whatsapp,.add-btn,.ask-btn,.hero::after,.hero::before,
+  .hero-stage::before,.hero-stage::after,.why-card::before,.grain-bg::after,
+  .hero h1 em,.fab-whatsapp::before,
+  section h2,section h3,section h4,section .section-tag{
+    animation:none;
+  }
+  .hero-stage::after{filter:none;}
+  #why{background-attachment:scroll;}
 </style>
 </head>
 <body>
@@ -1266,7 +1281,7 @@
         <h2>A veterinary-led livestock nutrition business.</h2>
         <p>JS Feeds &amp; Fodders is a Hasilpur-based feed and fodder supplier serving cattle and goat farmers across Punjab. What began as farm-level consultancy for dairy and goat owners has grown into a dedicated silage, hay, wanda and mineral-mixture business — one where every product is shaped by real veterinary and livestock-management experience, not just manufactured and sold. Our focus stays on the essentials that matter to a working farm: milk yield, weight gain, breeding, and everyday herd health, at fair and consistent rates.</p>
       </div>
-      <figure class="about-intro-visual"><img id="aboutGrainsImage" src="feed-grains-assorted.png" alt="A colorful assortment of grains used in livestock feed" loading="eager" decoding="async"></figure>
+      <figure class="about-intro-visual"><img id="aboutGrainsImage" src="feed-grains-assorted.jpg" alt="A colorful assortment of grains used in livestock feed" loading="eager" decoding="async"></figure>
     </div>
 
     <!-- 2. ABOUT DR ABDUL BASIT -->
@@ -1335,7 +1350,7 @@
     <div class="section-head reveal">
       <span class="section-tag">From The Factory Floor</span>
       <h2>Loaded, dispatched, delivered.</h2>
-      <p>A look at JS Silage Wanda Factory — from daytime loading to late-night dispatch across Punjab.</p>
+      <p>Explore the livestock, fodder and feed that support dairy farms — alongside dispatch from JS Silage Wanda Factory.</p>
     </div>
     <div class="gallery-grid swiper">
       <div class="swiper-wrapper">
@@ -1350,6 +1365,22 @@
       <div class="g-item reveal swiper-slide">
         <img id="gallerySilageBales" alt="JS Silage bales, properly fermented and wrapped">
         <div class="g-cap">Bale-packed silage, ready for the farm</div>
+      </div>
+      <div class="g-item reveal swiper-slide">
+        <img src="factory-visit-cattle-feeding.jpg" alt="Dairy cattle eating feed along a covered barn feeding line" loading="lazy" decoding="async">
+        <div class="g-cap">Dairy cattle feeding in a covered barn</div>
+      </div>
+      <div class="g-item reveal swiper-slide">
+        <img src="factory-visit-cattle-barn.jpg" alt="Cows eating forage in a clean, bright livestock barn" loading="lazy" decoding="async">
+        <div class="g-cap">Fresh forage served to the herd</div>
+      </div>
+      <div class="g-item reveal swiper-slide">
+        <img src="factory-visit-hay-bales.jpg" alt="Rows of wrapped hay bales beside a green fodder field" loading="lazy" decoding="async">
+        <div class="g-cap">Stored fodder bales beside the fields</div>
+      </div>
+      <div class="g-item reveal swiper-slide">
+        <img src="factory-visit-silage-sample.jpg" alt="Close-up of chopped silage with visible grain and crop pieces" loading="lazy" decoding="async">
+        <div class="g-cap">A close look at chopped silage</div>
       </div>
       </div>
       <div class="swiper-pagination gallery-pagination"></div>
@@ -1695,9 +1726,6 @@ Object.assign(IMG, {
   alfalfaBale: 'WhatsApp Image 2026-09-14 at 12.04.59 AM.jpeg'
 });
 </script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
 /* ====== CONFIG ====== */
@@ -1844,9 +1872,11 @@ document.getElementById('logoImg').src = IMG.logo;
 document.getElementById('sidebarLogoImg').src = IMG.logo;
 document.getElementById('heroLogo').src = IMG.logo;
 document.getElementById('doctorIntroPhoto').src = IMG.portrait;
-document.getElementById('heroFactoryLandscape').src = 'homepage-farm-harvest.png';
+document.getElementById('heroFactoryLandscape').src = 'homepage-farm-harvest.jpg';
 document.getElementById('heroFactoryPhoto').src = 'js-feeds-cattle-feed.jpg';
-document.getElementById('heroFarmScene').src = 'homepage-farm-harvest.png';
+document.getElementById('heroFarmScene').src = 'homepage-farm-harvest.jpg';
+document.getElementById('heroFactoryLandscape').fetchPriority = 'high';
+document.getElementById('heroFarmScene').fetchPriority = 'high';
 document.getElementById('heroCattle').src = 'https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=900&q=82';
 document.getElementById('heroGoat').src = 'https://images.unsplash.com/photo-1533318087102-b3ad366ed041?auto=format&fit=crop&w=900&q=82';
 document.getElementById('galleryDay').src = IMG.factoryDay;
@@ -1858,7 +1888,7 @@ document.getElementById('bsTruckNight').src = IMG.aboutTruckNight;
 document.getElementById('bsTruckBags').src = IMG.aboutTruckBags;
 document.getElementById('bsTruckWide').src = IMG.aboutTruckWide;
 document.querySelectorAll('.page-content section:not(.hero) img:not(#aboutGrainsImage)').forEach(image => {
-  image.loading = 'lazy';
+  if(!image.closest('.gallery-grid')) image.loading = 'lazy';
   image.decoding = 'async';
 });
 
@@ -2260,41 +2290,26 @@ observeReveals();
   }
 })();
 
-/* ====== PREMIUM MOTION LAYER ====== */
 (function(){
   const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(reduceMotion) return;
-
-  if(window.gsap){
-    const intro = gsap.timeline({defaults:{ease:'power3.out'}});
-    intro.from('.hero-brand-lockup', {y:24, autoAlpha:0, duration:.8})
-      .from('.hero h1', {y:30, autoAlpha:0, duration:1}, '-=.45')
-      .from('.hero .lede, .doctor-intro, .hero-reach, .hero-actions, .hero-stats, .quality-strip', {y:18, autoAlpha:0, stagger:.08, duration:.65}, '-=.55')
-      .from('.hero-photo, .purpose-visual', {y:28, scale:.97, autoAlpha:0, stagger:.1, duration:.85}, '-=.7');
-
-    if(window.ScrollTrigger){
-      gsap.utils.toArray('.reveal').forEach((element) => {
-        gsap.fromTo(element, {y:28, autoAlpha:0}, {y:0, autoAlpha:1, duration:.8, ease:'power3.out', scrollTrigger:{trigger:element, start:'top 86%', once:true}});
-      });
-    }
-  }
-
   if(window.Swiper && document.querySelector('.gallery-grid.swiper')){
     new Swiper('.gallery-grid.swiper', {
       slidesPerView:1,
       spaceBetween:18,
-      loop:true,
+      loop:false,
+      rewind:true,
       speed:850,
-      autoplay:{delay:4200, disableOnInteraction:false},
+      autoplay:reduceMotion ? false : {delay:4200, disableOnInteraction:false, pauseOnMouseEnter:true},
       pagination:{el:'.gallery-pagination', clickable:true},
       breakpoints:{760:{slidesPerView:2}, 1100:{slidesPerView:3}}
     });
     new Swiper('.factory-photo-strip.swiper', {
       slidesPerView:1,
       spaceBetween:18,
-      loop:true,
+      loop:false,
+      rewind:true,
       speed:850,
-      autoplay:{delay:3600, disableOnInteraction:false},
+      autoplay:reduceMotion ? false : {delay:3600, disableOnInteraction:false, pauseOnMouseEnter:true},
       pagination:{el:'.factory-pagination', clickable:true},
       breakpoints:{760:{slidesPerView:2}, 1100:{slidesPerView:3}}
     });
