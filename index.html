@@ -268,6 +268,7 @@
   .sidebar-links a::before{content:'•'; color:#b6b8aa; font-size:22px; line-height:0; width:18px; text-align:center;}
   .sidebar-links a[data-section="home"]::before{content:'⌂';}
   .sidebar-links a[data-section="about"]::before{content:'◯';}
+  .sidebar-links [data-section="products"]::before{content:'▦';}
   .sidebar-links a[data-section="reviews"]::before{content:'★';}
   .sidebar-links a[data-section="consultancy"]::before{content:'✚';}
   .sidebar-links a[data-section="feeds"]::before{content:'▱';}
@@ -280,6 +281,20 @@
   .sidebar-links a[data-section="faq"]::before{content:'?';}
   .sidebar-links a:hover,.sidebar-links a.active{background:linear-gradient(100deg,rgba(217,164,65,.22),rgba(199,59,48,.16)); color:var(--hay-bright); transform:translateX(2px); box-shadow:0 8px 24px rgba(0,0,0,.15);}
   .sidebar-links a.active::before{color:var(--hay-bright);}
+  .sidebar-product-group{display:grid; gap:4px;}
+  .sidebar-products-head{display:grid; grid-template-columns:minmax(0,1fr) 42px; gap:4px; align-items:center;}
+  .sidebar-links .sidebar-products-link{display:flex; align-items:center; gap:14px; width:100%; min-height:46px; padding:10px 18px; border:0; border-radius:15px; background:transparent; color:#fff; font-family:inherit; font-size:16.5px; font-weight:750; letter-spacing:.035em; text-align:left; cursor:pointer; transition:background .25s ease,color .25s ease,transform .25s ease,box-shadow .25s ease;}
+  .sidebar-links .sidebar-products-link::before{color:var(--hay-bright); font-size:20px;}
+  .sidebar-links .sidebar-products-link:hover{color:var(--hay-bright); background:linear-gradient(100deg,rgba(217,164,65,.22),rgba(199,59,48,.12)); transform:translateX(2px); box-shadow:0 8px 24px rgba(0,0,0,.15);}
+  .sidebar-links .sidebar-products-link:focus-visible,.sidebar-products-toggle:focus-visible{outline:2px solid var(--hay-bright); outline-offset:2px;}
+  .sidebar-products-toggle{display:grid; place-items:center; width:42px; height:42px; border:1px solid rgba(246,243,231,.12); border-radius:12px; background:rgba(246,243,231,.045); color:var(--hay-bright); cursor:pointer; transition:background .2s ease,transform .2s ease;}
+  .sidebar-products-toggle:hover{background:rgba(217,164,65,.16);}
+  .sidebar-products-toggle svg{width:17px; height:17px; transition:transform .2s ease;}
+  .sidebar-products-toggle[aria-expanded="true"] svg{transform:rotate(180deg);}
+  .sidebar-products-subnav{display:grid; gap:3px; padding:2px 0 1px 18px;}
+  .sidebar-products-subnav[hidden]{display:none;}
+  .sidebar-links .sidebar-products-subnav a{min-height:38px; padding:8px 12px; border-radius:11px; font-size:14px;}
+  .sidebar-links .sidebar-products-subnav a::before{font-size:18px; width:15px;}
   .sidebar-products{display:none;}
   .sidebar-footer{margin-top:auto; padding:25px 8px 0; border-top:1px solid rgba(246,243,231,.12); text-align:center; color:rgba(246,243,231,.7); font-size:12px; line-height:1.9; letter-spacing:.04em;}
   .sidebar-footer strong{color:#f6f3e7; font-weight:500;}
@@ -1187,9 +1202,19 @@
     <a href="index.html?page=home" data-section="home">Home</a>
     <a href="index.html?page=about" data-section="about">About Us</a>
     <a href="index.html?page=consultancy" data-section="consultancy">Farm Consultancy</a>
-    <a href="index.html?page=feeds" data-section="feeds">Feeds</a>
-    <a href="index.html?page=fodders" data-section="fodders">Fodders</a>
-    <a href="index.html?page=minerals" data-section="minerals">Minerals</a>
+    <div class="sidebar-product-group">
+      <div class="sidebar-products-head">
+        <button class="sidebar-products-link" type="button" aria-expanded="false" aria-controls="sidebarProductSubnav">Products</button>
+        <button class="sidebar-products-toggle" type="button" aria-label="Expand product categories" aria-expanded="false" aria-controls="sidebarProductSubnav">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+      </div>
+      <div class="sidebar-products-subnav" id="sidebarProductSubnav">
+        <a href="index.html?page=feeds" data-section="feeds">Feeds</a>
+        <a href="index.html?page=fodders" data-section="fodders">Fodders</a>
+        <a href="index.html?page=minerals" data-section="minerals">Minerals</a>
+      </div>
+    </div>
     <a href="index.html?page=gallery" data-section="gallery">Factory Visit</a>
     <a href="index.html?page=locations" data-section="locations">Location</a>
     <a href="index.html?page=contact" data-section="contact">Contact</a>
@@ -2510,6 +2535,39 @@ window.addEventListener('scroll', updateHeaderScrollState, {passive:true});
 const currentPage = new URLSearchParams(window.location.search).get('page') || 'home';
 document.querySelectorAll('.sidebar-links a').forEach(link => {
   link.classList.toggle('active', link.dataset.section === currentPage);
+});
+const productButton = document.querySelector('.sidebar-products-link');
+const productToggle = document.querySelector('.sidebar-products-toggle');
+const productSubnav = document.getElementById('sidebarProductSubnav');
+const productMenuStorageKey = 'js-products-menu-expanded';
+let savedProductMenuState = null;
+try {
+  savedProductMenuState = localStorage.getItem(productMenuStorageKey);
+} catch(error) {
+  console.error('Unable to read the saved Products menu state.', error);
+}
+const productMenuExpanded = savedProductMenuState === 'true';
+productButton.setAttribute('aria-expanded', String(productMenuExpanded));
+productToggle.setAttribute('aria-expanded', String(productMenuExpanded));
+productToggle.setAttribute('aria-label', productMenuExpanded ? 'Collapse product categories' : 'Expand product categories');
+productSubnav.hidden = !productMenuExpanded;
+const setProductMenuExpanded = expanded => {
+  productButton.setAttribute('aria-expanded', String(expanded));
+  productToggle.setAttribute('aria-expanded', String(expanded));
+  productToggle.setAttribute('aria-label', expanded ? 'Collapse product categories' : 'Expand product categories');
+  productSubnav.hidden = !expanded;
+  try {
+    localStorage.setItem(productMenuStorageKey, String(expanded));
+  } catch(error) {
+    console.error('Unable to save the Products menu state.', error);
+  }
+};
+productButton.addEventListener('click', () => {
+  setProductMenuExpanded(productButton.getAttribute('aria-expanded') !== 'true');
+});
+productToggle.addEventListener('click', () => {
+  const expanded = productToggle.getAttribute('aria-expanded') === 'true';
+  setProductMenuExpanded(!expanded);
 });
 const observedSections = document.querySelectorAll('#home, #about, #consultancy, #reviews, #faq, #feeds, #fodders, #minerals, #why, #gallery, #locations, #contact');
 const sectionObserver = new IntersectionObserver(entries => {
